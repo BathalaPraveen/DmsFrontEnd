@@ -1,0 +1,48 @@
+<nav [ngClass]="darkMode ? 'navbar navbar-dark bg-dark shadow-sm sticky-top' : 'navbar navbar-light bg-white shadow-sm sticky-top'">
+  <div class="container-fluid d-flex align-items-center justify-content-between">
+    <div class="d-flex align-items-center gap-2">
+      <button class="btn" [ngClass]="darkMode ? 'text-white' : 'text-dark'">
+        <i class="fa fa-bars"></i>
+      </button>
+
+      <button class="btn d-lg-none" [ngClass]="darkMode ? 'text-white' : 'text-dark'" (click)="toggleOffcanvas()">
+        <i class="fa fa-cog"></i>
+      </button>
+    </div>
+
+    <div class="d-none d-lg-flex align-items-center gap-2">
+      <button class="btn btn-outline-secondary" (click)="toggleTheme()">
+        <i class="fa" [ngClass]="darkMode ? 'fa-sun' : 'fa-moon'"></i>
+      </button>
+
+      <select class="form-select form-select-sm"
+              [ngClass]="darkMode ? 'bg-dark text-white border-light' : ''"
+              (change)="handleLanguageChange($event)">
+        <option value="en">English</option>
+        <option value="ms">Bahasa Malaysia</option>
+      </select>
+
+      <!-- Profile Dropdown -->
+      <div class="dropdown" #dropdownRef>
+        <button class="btn d-flex align-items-center" [ngClass]="darkMode ? 'btn-dark text-white' : 'btn-light'" (click)="toggleDropdown()">
+          <img src="assets/profile.png" class="rounded-circle me-2" width="40" height="40" />
+          <span class="fw-semibold">{{ user?.name }}</span>
+        </button>
+
+        <ul *ngIf="openDropdown" class="dropdown-menu dropdown-menu-end show mt-2 shadow"
+            [ngClass]="darkMode ? 'bg-dark text-white' : ''">
+          <li>
+            <button class="dropdown-item" (click)="showProfile = true">
+              <i class="fa fa-user me-2"></i> {{ 'profile.myprofile' | translate }}
+            </button>
+          </li>
+          <li>
+            <button class="dropdown-item text-danger" (click)="handleLogout()">
+              <i class="fa fa-sign-out-alt me-2"></i> {{ 'profile.logout' | translate }}
+            </button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>

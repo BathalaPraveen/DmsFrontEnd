@@ -1,0 +1,85 @@
+<nav class="navbar"
+     [ngClass]="darkMode() ? 'navbar-dark bg-dark' : 'navbar-light bg-white'">
+
+  <div class="container-fluid d-flex align-items-center justify-content-between">
+
+    <!-- Left section -->
+    <div class="d-flex align-items-center gap-2">
+      <button class="btn" (click)="showOffcanvas.set(true)">
+        <i class="fa fa-bars"></i>
+      </button>
+    </div>
+
+    <!-- Right section: Desktop -->
+    <div class="d-none d-lg-flex align-items-center gap-3">
+
+      <!-- Theme Button -->
+      <button class="btn btn-outline-secondary" (click)="toggleTheme()">
+        <i [ngClass]="darkMode() ? 'fa fa-sun' : 'fa fa-moon'"></i>
+      </button>
+
+      <!-- Language -->
+      <select class="form-select form-select-sm" style="width: 130px;"
+              (change)="changeLanguage($event)">
+        <option value="en">English</option>
+        <option value="ms">Malaysia</option>
+      </select>
+
+      <!-- Clock -->
+      <span class="clock">
+        {{ (new Date()).toLocaleTimeString() }}
+      </span>
+
+      <!-- Profile Dropdown -->
+      <div class="dropdown" style="position: relative;">
+        <button class="btn btn-light d-flex align-items-center"
+                (click)="openDropdown.set(!openDropdown())">
+
+          <img src="assets/profile.png"
+               width="40" height="40"
+               class="rounded-circle me-2">
+
+          <span class="fw-semibold">{{ username() || 'User' }}</span>
+        </button>
+
+        <ul *ngIf="openDropdown()"
+            class="dropdown-menu show dropdown-menu-end mt-2 shadow">
+          <li>
+            <button class="dropdown-item">My Profile</button>
+          </li>
+          <li>
+            <button class="dropdown-item text-danger"
+                    (click)="logout()">Logout</button>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</nav>
+
+<!-- Offcanvas (Mobile) -->
+<div *ngIf="showOffcanvas()" class="offcanvas-backdrop" (click)="showOffcanvas.set(false)">
+</div>
+
+<div *ngIf="showOffcanvas()" class="offcanvas-panel"
+     [ngClass]="darkMode() ? 'bg-dark text-white' : ''">
+
+  <button class="close-btn" (click)="showOffcanvas.set(false)">X</button>
+
+  <button class="btn btn-outline-secondary" (click)="toggleTheme()">
+    <i [ngClass]="darkMode() ? 'fa fa-sun' : 'fa fa-moon'"></i> Theme
+  </button>
+
+  <select class="form-select mt-2" (change)="changeLanguage($event)">
+    <option value="en">English</option>
+    <option value="ms">Malaysia</option>
+  </select>
+
+  <span class="mt-3 d-block clock">
+    {{ (new Date()).toLocaleTimeString() }}
+  </span>
+
+  <button class="btn btn-danger mt-3" (click)="logout()">Logout</button>
+
+</div>

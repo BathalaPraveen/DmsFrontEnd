@@ -1,0 +1,55 @@
+.app-header {
+  padding: 10px 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.left-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.header-logo {
+  height: 40px;
+}
+
+.right-controls {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.icon-btn {
+  border: none;
+  background: transparent;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.lang-select {
+  padding: 4px 6px;
+  border-radius: 5px;
+}
+
+.clock {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.profile-box {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.profile-img {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+}
+
+.profile-name {
+  font-weight: 600;
+}

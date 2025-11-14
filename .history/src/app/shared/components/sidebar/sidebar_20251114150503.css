@@ -1,0 +1,35 @@
+.sidebar-area {
+  background: #002560;
+  color: #fff;
+  width: 250px;
+  height: 100%;
+  padding: 10px 0;
+}
+
+.sidebar-logo {
+  text-align: center;
+  padding: 10px;
+}
+
+.big-logo {
+  height: 45px;
+}
+
+.menu-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 10px;
+}
+
+.menu-item {
+  padding: 12px 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 14px;
+}
+
+.menu-item:hover {
+  background: rgba(255,255,255,0.1);
+}

@@ -1,0 +1,13 @@
+<app-header></app-header>
+
+<div class="layout">
+
+  <app-sidebar [(activeItem)]="activeItem"></app-sidebar>
+
+  <main class="main-area">
+    <router-outlet></router-outlet>
+  </main>
+
+</div>
+
+<app-footer></app-footer>

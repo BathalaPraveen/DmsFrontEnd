@@ -1,0 +1,119 @@
+/* src/app/shared/components/sidebar/sidebar.css */
+
+.sidebar {
+  background: #002560;
+  color: #fff;
+  transition: width 0.25s ease;
+  overflow: visible;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar.collapsed {
+  width: 60px !important;
+}
+
+.logo-area {
+  padding: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-big { height: 40px; }
+.logo-small { height: 38px; }
+
+/* menu */
+.menu-wrap { padding: 8px 6px; overflow-y: auto; }
+.menu-list { list-style: none; padding: 0; margin: 0; }
+
+.menu-item { margin-bottom: 6px; position: relative; }
+
+.menu-parent {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color .15s;
+  color: #fff;
+}
+
+.menu-parent:hover {
+  background: rgba(255,255,255,0.06);
+}
+
+.menu-parent .left { display:flex; align-items:center; gap:8px; font-size:14px; }
+.menu-parent .left i { width: 18px; text-align: center; }
+
+/* active parent */
+.menu-parent.active-parent {
+  background: rgba(255,255,255,0.12);
+  border-radius: 6px;
+}
+
+/* sub-items when expanded */
+.sub-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 6px 0 0 0;
+}
+.sub-item {
+  padding: 6px 12px;
+  padding-left: 48px;
+  font-size: 13px;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 4px;
+}
+.sub-item:hover { background: rgba(255,255,255,0.04); }
+.sub-item.active { background: rgba(255,255,255,0.12); color: #fff; }
+
+/* little dot */
+.dot {
+  position: absolute;
+  left: 36px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(238,148,63,0.95);
+}
+
+/* popup when collapsed */
+.hover-popup {
+  position: fixed;
+  min-width: 220px;
+  background: #002560;
+  color: #fff;
+  z-index: 1050;
+  border-radius: 6px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+  padding: 6px 0;
+}
+
+.popup-title {
+  padding: 8px 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.popup-item {
+  padding: 8px 16px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.popup-item:hover { background: rgba(255,255,255,0.04); }
+
+/* footer collapse btn */
+.side-footer {
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+}
+.collapse-btn {
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+}

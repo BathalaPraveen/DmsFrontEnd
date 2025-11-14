@@ -1,0 +1,10 @@
+<div class="app-body d-flex">
+  <app-sidebar [collapsed]="isCollapsed" (collapsedChange)="isCollapsed = $event"
+               [(activeItem)]="activeItem"></app-sidebar>
+
+  <div class="main-content flex-grow-1">
+    <app-header (toggleSidebar)="isCollapsed = !isCollapsed"></app-header>
+    <router-outlet></router-outlet>
+    <app-footer></app-footer>
+  </div>
+</div>

@@ -1,0 +1,77 @@
+<!-- src/app/shared/components/sidebar/sidebar.html -->
+<aside
+  class="sidebar d-flex flex-column vh-100"
+  [class.collapsed]="collapsed"
+  [style.width]="collapsed ? '60px' : '250px'">
+
+  <!-- Logo area -->
+  <div class="logo-area text-center">
+    <img src="assets/slogo.png" *ngIf="collapsed" class="logo-small" />
+    <div *ngIf="!collapsed" class="logo-full">
+      <img src="assets/logo.png" class="logo-big" />
+    </div>
+  </div>
+
+  <!-- menu list -->
+  <nav class="menu-wrap flex-grow-1">
+    <ul class="menu-list">
+      <!-- iterate menu items -->
+      <li *ngFor="let m of menuItems" class="menu-item"
+          (mouseenter)="onMouseEnterParent(m.key, $event)"
+          (mouseleave)="onMouseLeaveParent()">
+
+        <!-- parent row -->
+        <div
+          class="menu-parent d-flex align-items-center justify-content-between"
+          [class.active-parent]="activeParent() === m.key"
+          (click)="m.children ? onParentClick(m.key) : onSingleClick(m)">
+
+          <div class="left">
+            <i [class]="m.icon + ' me-2'"></i>
+            <span class="label" *ngIf="!collapsed">{{ m.label }}</span>
+
+          </div>
+
+          <div class="right" *ngIf="!collapsed">
+            <i *ngIf="m.children"
+               class="fa"
+               [ngClass]="openMenu() === m.key ? 'fa-chevron-down' : 'fa-chevron-right'"></i>
+          </div>
+
+        </div>
+
+        <!-- children (expanded) -->
+        <ul *ngIf="!collapsed && m.children && openMenu() === m.key" class="sub-list">
+          <li *ngFor="let c of m.children" class="sub-item"
+              (click)="onChildClick(c, m.key)"
+              [class.active]="isActiveItem(typeof c === 'string' ? c : c.label)">
+            <span class="dot"></span>
+            <span class="sub-label">{{ typeof c === 'string' ? c : c.label }}</span>
+          </li>
+        </ul>
+
+        <!-- collapsed popup (when collapsed and hovering) -->
+        <ng-container *ngIf="collapsed && hoverMenu() === m.key">
+          <ul class="hover-popup"
+              [ngStyle]="{'top.px': hoverPos().top, 'left.px': hoverPos().left + 8}">
+            <li class="popup-title" (click)="onSingleClick(m)">{{ m.label }}</li>
+            <li *ngFor="let c of m.children || []"
+                class="popup-item"
+                (click)="onChildClick(c, m.key)">
+              {{ typeof c === 'string' ? c : c.label }}
+            </li>
+          </ul>
+        </ng-container>
+
+      </li>
+    </ul>
+  </nav>
+
+  <!-- footer small controls -->
+  <div class="side-footer">
+    <button class="collapse-btn" (click)="toggleCollapse()">
+      <i class="fa" [ngClass]="collapsed ? 'fa-chevron-right' : 'fa-chevron-left'"></i>
+    </button>
+  </div>
+
+</aside>

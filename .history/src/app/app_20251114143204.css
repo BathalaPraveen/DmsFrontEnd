@@ -1,0 +1,37 @@
+.layout {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+/* BODY */
+.body-container {
+  display: flex;
+  flex: 1;
+}
+
+/* SIDEBAR WIDTH */
+app-sidebar {
+  width: 60px;                      /* collapsed */
+  transition: width .3s ease-in-out;
+}
+
+app-sidebar[collapsed="false"] {
+  width: 250px;                     /* expanded */
+}
+
+/* MAIN AREA SHIFT */
+.main-area {
+  flex: 1;
+  margin-left: 60px;
+  transition: margin-left .3s ease-in-out;
+}
+
+.main-area.shift {
+  margin-left: 250px;
+}
+
+.content-wrapper {
+  padding: 20px;
+  min-height: calc(100vh - 60px);
+}

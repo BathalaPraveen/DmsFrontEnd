@@ -1,0 +1,29 @@
+<div class="login-container">
+  <form (ngSubmit)="submit()" class="login-form">
+    <h2>Login</h2>
+
+    <label>User </label>
+    <input type="email" [(ngModel)]="email" name="email" placeholder="Enter your email" />
+    @if (errors['email']) {
+      <p class="error">{{ errors['email'] }}</p>
+    }
+
+    <label>Password</label>
+    <div class="password-container">
+      <input
+        [type]="showPassword ? 'text' : 'password'"
+        [(ngModel)]="password"
+        name="password"
+        placeholder="Enter your password"
+      />
+      <span class="eye-icon" (click)="showPassword = !showPassword">
+        <i class="fa" [class.fa-eye]="!showPassword" [class.fa-eye-slash]="showPassword"></i>
+      </span>
+    </div>
+    @if (errors['password']) {
+      <p class="error">{{ errors['password'] }}</p>
+    }
+
+    <button class="btn btn-primary" type="submit">Login</button>
+  </form>
+</div>

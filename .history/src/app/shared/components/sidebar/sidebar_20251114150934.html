@@ -1,0 +1,38 @@
+<div class="sidebar">
+
+  <div class="logo-section">
+    <img src="assets/logo.png" class="full-logo">
+  </div>
+
+  <ul class="menu">
+
+    <li *ngFor="let item of menu">
+      <!-- Parent Item -->
+      <div class="menu-item"
+           (click)="toggle(item)"
+           [class.active]="activeParent === item">
+
+        <i class="{{item.icon}}"></i>
+        <span>{{item.label}}</span>
+
+        <i *ngIf="item.children"
+           class="fa"
+           [ngClass]="item.open ? 'fa-chevron-down' : 'fa-chevron-right'"></i>
+
+      </div>
+
+      <!-- Child Menu -->
+      <ul *ngIf="item.children && item.open" class="child-menu">
+        <li *ngFor="let c of item.children"
+            (click)="navigateTo(c)"
+            [class.sub-active]="activeChild === c.label">
+
+          <span class="dot"></span> {{c.label}}
+        </li>
+      </ul>
+
+    </li>
+
+  </ul>
+
+</div>

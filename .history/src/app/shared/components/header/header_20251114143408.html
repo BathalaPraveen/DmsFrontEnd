@@ -1,0 +1,35 @@
+<header class="header">
+
+  <!-- Left: Hamburger -->
+  <div class="left">
+    <button class="menu-btn" (click)="toggle()">
+      <i class="fa fa-bars"></i>
+    </button>
+
+    <h2 class="title">DMS Dashboard</h2>
+  </div>
+
+  <!-- Right: Settings / Language / Time / Profile -->
+  <div class="right">
+
+    <!-- Theme icon -->
+    <i class="fa fa-cog settings-icon"></i>
+
+    <!-- Language -->
+    <select class="lang-select">
+      <option value="en">English</option>
+      <option value="ms">Malay</option>
+    </select>
+
+    <!-- Clock -->
+    <span class="clock">{{ now | date:'hh:mm:ss a' }}</span>
+
+    <!-- Profile -->
+    <div class="profile">
+      <img class="profile-img" src="assets/profile.png" />
+      <span>{{ username }}</span>
+      <i class="fa fa-chevron-down"></i>
+    </div>
+  </div>
+
+</header>

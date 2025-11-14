@@ -1,0 +1,30 @@
+<div class="layout">
+
+  <!-- HEADER -->
+  <header class="header-wrapper">
+    <app-header (toggleSidebar)="isCollapsed = !isCollapsed"></app-header>
+  </header>
+
+  <div class="body-wrapper">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar-wrapper"
+           [class.collapsed]="isCollapsed">
+       <app-sidebar
+    [collapsed]="isCollapsed"
+    [(activeItem)]="activeItem">
+  </app-sidebar>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="content-wrapper">
+      <div class="content-inner">
+        <router-outlet></router-outlet>
+      </div>
+
+      <app-footer></app-footer>
+    </main>
+
+  </div>
+
+</div>

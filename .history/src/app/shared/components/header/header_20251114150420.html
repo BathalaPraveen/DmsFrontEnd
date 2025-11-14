@@ -1,0 +1,31 @@
+<nav class="navbar app-header shadow-sm bg-white">
+
+  <div class="left-title">
+    <img src="assets/logo.png" class="header-logo" />
+  </div>
+
+  <div class="right-controls">
+
+    <!-- THEME -->
+    <button class="icon-btn" (click)="toggleTheme()">
+      <i [class]="darkMode ? 'fa fa-sun' : 'fa fa-moon'"></i>
+    </button>
+
+    <!-- LANGUAGE -->
+    <select class="lang-select" (change)="changeLanguage($event)">
+      <option value="en">English</option>
+      <option value="ms">Malaysia</option>
+    </select>
+
+    <!-- CLOCK -->
+    <span class="clock">{{ time }}</span>
+
+    <!-- PROFILE -->
+    <div class="profile-box">
+      <img src="assets/profile.png" class="profile-img" />
+      <span class="profile-name">{{ username }}</span>
+    </div>
+
+  </div>
+
+</nav>

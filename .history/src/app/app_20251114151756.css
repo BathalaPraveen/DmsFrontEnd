@@ -1,0 +1,49 @@
+.layout {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+/* HEADER */
+.header-section {
+  height: 65px;
+  flex-shrink: 0;
+  border-bottom: 1px solid #ddd;
+}
+
+/* BODY AREA */
+.body-section {
+  display: flex;
+  flex-grow: 1;
+  overflow: hidden;
+}
+
+/* SIDEBAR */
+.sidebar-section {
+  width: 250px;
+  flex-shrink: 0;
+  overflow-y: auto;
+  background: #002560;
+  color: white;
+}
+
+/* CONTENT AREA (IMPORTANT FIX HERE) */
+.content-section {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;  /* MAKE FOOTER GO BOTTOM */
+  background: #f7f9fc;
+  overflow: auto;
+  padding: 20px;
+}
+
+/* Space for router content */
+router-outlet + * {
+  flex: 1 0 auto; /* Content grows */
+}
+
+/* FOOTER */
+app-footer {
+  margin-top: auto;        /* PUSH FOOTER TO BOTTOM */
+  padding-top: 10px;
+}

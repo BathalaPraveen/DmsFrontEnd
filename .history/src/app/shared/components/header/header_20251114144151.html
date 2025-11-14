@@ -1,0 +1,71 @@
+<nav class="navbar app-header shadow-sm"
+     [ngClass]="darkMode() ? 'navbar-dark bg-dark' : 'navbar-light bg-white'">
+
+  <div class="container-fluid header-container">
+
+    <!-- LEFT AREA -->
+    <div class="left-section">
+      <h3 class="app-title">DMS Dashboard</h3>
+    </div>
+
+    <!-- RIGHT AREA -->
+    <div class="right-section">
+
+      <!-- Theme Switch -->
+      <button class="icon-btn" (click)="toggleTheme()"
+              [ngClass]="darkMode() ? 'text-warning' : 'text-dark'">
+        <i [ngClass]="darkMode() ? 'fa fa-sun' : 'fa fa-moon'"></i>
+      </button>
+
+      <!-- Language -->
+      <select class="lang-select"
+              (change)="changeLanguage($event)">
+        <option value="en">English</option>
+        <option value="ms">Malaysia</option>
+      </select>
+
+      <!-- Clock -->
+      <span class="clock-text">{{ time() }}</span>
+
+      <!-- Profile Dropdown -->
+      <div class="profile-wrapper">
+        <button class="profile-btn" (click)="openDropdown.set(!openDropdown())">
+          <img src="assets/profile.png" class="profile-img" />
+          <span class="profile-name">{{ username() }}</span>
+          <i class="fa fa-chevron-down ms-1"></i>
+        </button>
+
+        <ul class="profile-menu" *ngIf="openDropdown()">
+          <li class="profile-item">My Profile</li>
+          <li class="profile-item logout" (click)="logout()">Logout</li>
+        </ul>
+      </div>
+
+    </div>
+
+  </div>
+</nav>
+
+<!-- MOBILE OFFCANVAS -->
+
+<div class="offcanvas-panel"
+     [ngClass]="darkMode() ? 'bg-dark text-white' : ''">
+
+  <button class="close-btn" (click)="showOffcanvas.set(false)">✖</button>
+
+  <h4 class="oc-title">Menu</h4>
+
+  <button class="theme-btn" (click)="toggleTheme()">
+    <i [ngClass]="darkMode() ? 'fa fa-sun' : 'fa fa-moon'"></i>
+    Theme Switch
+  </button>
+
+  <select class="oc-lang" (change)="changeLanguage($event)">
+    <option value="en">English</option>
+    <option value="ms">Malaysia</option>
+  </select>
+
+  <span class="clock-text mt-3">{{ time() }}</span>
+
+  <button class="logout-btn" (click)="logout()">Logout</button>
+</div>

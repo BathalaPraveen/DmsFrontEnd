@@ -1,0 +1,14 @@
+<aside class="sidebar" [attr.collapsed]="collapsed">
+
+  <ul>
+    <li *ngFor="let item of menu"
+        (click)="select(item.label)"
+        [class.active]="activeItem === item.label">
+
+      <i [class]="item.icon"></i>
+
+      <span *ngIf="!collapsed">{{ item.label }}</span>
+    </li>
+  </ul>
+
+</aside>

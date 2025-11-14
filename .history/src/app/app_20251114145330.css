@@ -1,0 +1,28 @@
+.app-wrapper {
+  height: 100vh;
+  overflow: hidden;
+}
+
+.sidebar {
+  width: 250px;
+  min-width: 250px;
+}
+
+.content-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+app-header {
+  width: 100%;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.page-body {
+  flex-grow: 1;
+  overflow-y: auto;
+  padding: 20px;
+}

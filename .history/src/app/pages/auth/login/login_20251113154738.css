@@ -1,0 +1,107 @@
+/* Center layout */
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(135deg, #f0f4ff, #cfd8ff);
+}
+
+/* Login form card */
+.login-form {
+  background: #fff;
+  padding: 30px 30px;
+  border-radius: 14px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  width: 360px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  gap: 8px;
+}
+
+.login-form h2 {
+  color: #333;
+  margin-bottom: 20px;
+  margin-top: 10px;
+  font-weight: 900;
+}
+
+/* Labels */
+.login-form label {
+  text-align: left;
+  margin-top: 10px;
+  font-weight: 550;
+  color: #333;
+}
+
+/* Input fields */
+.login-form input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  outline: none;
+  font-size: 15px;
+  transition: border 0.3s ease;
+  height: 42px; /* uniform height */
+  box-sizing: border-box;
+}
+
+/* Focus style */
+.login-form input:focus {
+  border-color: #007bff;
+}
+
+/* 🔴 Error border style */
+.input-error {
+  border-color: #e74c3c !important;
+  background-color: #fff6f6;
+}
+
+/* Password container */
+.password-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 42px;
+}
+
+/* Eye icon */
+.eye-icon {
+  position: absolute;
+  right: 12px;
+  cursor: pointer;
+  color: #666;
+  font-size: 18px;
+  transition: color 0.3s ease;
+}
+
+.eye-icon:hover {
+  color: #007bff;
+}
+
+/* Error text */
+.error {
+  color: #e74c3c;
+  font-size: 14px;
+  text-align: left;
+  margin-top: 2px;
+}
+
+/* Button */
+.login-form button.btn-primary {
+  margin-top: 20px;
+  background: #007bff;
+  border: none;
+  color: #fff;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.login-form button.btn-primary:hover {
+  background: #0056b3;
+}

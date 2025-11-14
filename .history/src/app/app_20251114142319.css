@@ -1,0 +1,55 @@
+/* FULL SCREEN LAYOUT */
+.layout {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+/* HEADER */
+.header-wrapper {
+  flex: 0 0 auto;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: white;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+}
+
+/* BODY LAYOUT */
+.body-wrapper {
+  flex: 1 1 auto;
+  display: flex;
+  overflow: hidden;
+}
+
+/* SIDEBAR */
+.sidebar-wrapper {
+  flex: 0 0 250px;
+  background-color: #002560;
+  transition: width 0.25s ease;
+  overflow-y: auto;
+}
+
+.sidebar-wrapper.collapsed {
+  width: 60px !important;
+}
+
+/* MAIN CONTENT */
+.content-wrapper {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  background: #f5f6f8;
+}
+
+.content-inner {
+  padding: 20px;
+}
+
+/* FOOTER */
+app-footer {
+  margin-top: auto;
+}
+
+

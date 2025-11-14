@@ -1,0 +1,19 @@
+<div class="layout">
+
+  <!-- HEADER -->
+  <app-header (toggleSidebar)="toggleSidebar()"></app-header>
+
+<div class="container-body">
+
+  <app-sidebar
+      [collapsed]="isCollapsed"
+      [(activeItem)]="activeItem">
+  </app-sidebar>
+
+  <main class="main-area" [class.shift]="!isCollapsed">
+      <router-outlet></router-outlet>
+      <app-footer></app-footer>
+  </main>
+
+</div>
+</div>
