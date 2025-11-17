@@ -8,7 +8,7 @@ import { NgClass } from '@angular/common';
   templateUrl: './dashboard.html',
   styleUrls: ['./dashboard.css']
 })
-export class Dashboard implements OnInit {
+export class DashboardComponent implements OnInit {
 
   user = signal<any>(null);
   darkMode = signal(false);
