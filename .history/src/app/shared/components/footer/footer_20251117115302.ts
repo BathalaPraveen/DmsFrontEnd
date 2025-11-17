@@ -1,4 +1,5 @@
 import { Component, signal } from '@angular/core';
+import { NgClass } from '@angular/common';
 
 @Component({
   selector: 'app-footer',

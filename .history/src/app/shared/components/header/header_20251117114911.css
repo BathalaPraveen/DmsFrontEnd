@@ -1,5 +1,5 @@
 .header {
-  height: 46px;
+  height: 70px;
   background: white;
   padding: 10px 20px;
   display: flex;
@@ -9,7 +9,7 @@
 }
 
 .header-logo {
-  height: 34px;
+  height: px;
 }
 
 .header-right {
