@@ -1,0 +1,25 @@
+<div class="layout">
+
+  <!-- HEADER -->
+  <app-header class="header-section"></app-header>
+
+  <div class="body-holder d-flex">
+
+    <!-- SIDEBAR -->
+    <app-sidebar class="sidebar-section"></app-sidebar>
+
+    <!-- MAIN AREA -->
+    <div class="main-section flex-grow-1 d-flex flex-column">
+
+      <div class="content-area flex-grow-1 p-3">
+        <router-outlet></router-outlet>
+      </div>
+
+      <!-- FOOTER -->
+      <app-footer></app-footer>
+
+    </div>
+
+  </div>
+
+</div>

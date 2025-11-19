@@ -1,0 +1,47 @@
+/* HEADER OUTER WRAPPER */
+.header {
+  height: 60px;
+  background: #fff;
+  padding: 0 20px;
+
+  /* Bootstrap style using pure flex */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  border-bottom: 1px solid #e0e0e0;
+}
+
+/* LOGO */
+.header-logo {
+  height: 40px;
+  object-fit: contain;
+}
+
+/* RIGHT SIDE ITEMS */
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+/* DARK MODE ICON */
+.icon {
+  font-size: 18px;
+  cursor: pointer;
+}
+
+/* PROFILE IMAGE */
+.profile-img {
+  width: 34px;
+  height: 34px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 1px solid #ccc;
+}
+
+/* Optional Hover */
+.profile-img:hover {
+  transform: scale(1.05);
+  transition: .2s;
+}

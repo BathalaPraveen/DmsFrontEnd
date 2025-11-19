@@ -1,0 +1,7 @@
+.navbar {
+  height: 60px;
+}
+
+.rounded-circle {
+  object-fit: cover;
+}

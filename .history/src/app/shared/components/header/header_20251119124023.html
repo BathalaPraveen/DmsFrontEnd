@@ -5,7 +5,7 @@
   <div class="header-right">
 
     <button
-      class="btn btn-outline-secondary p-1"
+      class="btn btn-outline-secondary rounded-circle p-2"
       (click)="toggleIcon()"
       [title]="isDark() ? 'Switch to Light Mode' : 'Switch to Dark Mode'">
 
@@ -13,19 +13,14 @@
          [ngClass]="isDark() ? 'fa-moon' : 'fa-sun'"></i>
     </button>
 
-<select class="form-select form-select-sm rounded-pill fw-semibold
-               border border-2 shadow-sm px-3"
-        [ngClass]="isDark()
-          ? 'bg-dark text-white border-light shadow'
-          : 'bg-light text-dark border-primary shadow-sm'"
-        style="width: 170px;"
+<select class="form-select form-select-sm"
+        [ngClass]="isDark() ? 'bg-dark text-white border-light' : ''"
+        style="width: 140px"
         [value]="selectedLang"
         (change)="changeLang($event)">
   <option value="en">English</option>
-  <option value="ms">Malay</option>
+  <option value="ms">Bahasa Malaysia</option>
 </select>
-
-
 
     <span class="fw-semibold">{{ time() }}</span>
 

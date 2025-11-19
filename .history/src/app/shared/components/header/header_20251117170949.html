@@ -1,0 +1,37 @@
+<nav class="header d-flex align-items-center justify-content-between px-3">
+
+  <!-- LEFT LOGO -->
+  <div class="d-flex align-items-center gap-3">
+    <img src="assets/logo.png" class="header-logo" />
+    <i class="fa fa-bars menu-icon"></i>
+  </div>
+
+  <!-- RIGHT SECTION -->
+  <div class="d-flex align-items-center gap-3">
+
+    <!-- DARK MODE BUTTON -->
+    <div class="card-btn d-flex align-items-center justify-content-center">
+      <i class="fa fa-moon"></i>
+    </div>
+
+    <!-- LANGUAGE DROPDOWN -->
+    <div class="card-btn px-2">
+      <select class="form-select form-select-sm border-0 bg-transparent lang-select">
+        <option>English</option>
+        <option>Bahasa Malaysia</option>
+      </select>
+    </div>
+
+    <!-- TIME -->
+    <div class="card-btn px-3 fw-semibold">
+      {{ time() }}
+    </div>
+
+    <!-- PROFILE -->
+    <div class="card-btn profile-box d-flex align-items-center gap-2 px-2">
+      <img src="assets/profile.png" class="profile-img" />
+    </div>
+
+  </div>
+
+</nav>

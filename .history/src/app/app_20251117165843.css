@@ -1,0 +1,47 @@
+.layout {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+/* HEADER */
+.header-section {
+  height: 65px;
+  flex-shrink: 0;
+  border-bottom: 1px solid #ddd;
+  background: white;
+  z-index: 99;
+}
+
+/* SIDEBAR + CONTENT */
+.body-holder {
+  flex-grow: 1;
+  overflow: hidden;
+}
+
+/* SIDEBAR */
+.sidebar-section {
+  width: 250px;
+  height: 100%;
+  flex-shrink: 0;
+  overflow-y: auto;
+  background: #002560;
+  color: white;
+}
+
+/* MAIN SECTION */
+.main-section {
+  overflow: hidden;
+}
+
+/* CONTENT AREA */
+.content-area {
+  overflow-y: auto;
+  background: #f5f7fa;
+}
+
+/* FOOTER */
+app-footer {
+  display: block;
+  padding: 10px 0;
+}

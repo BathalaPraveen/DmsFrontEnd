@@ -10,8 +10,9 @@ import { NgClass } from '@angular/common';
 })
 export class HeaderComponent implements OnInit {
 
+  darkMode = false;
   username = '';
-  isDark = signal(false);
+  isDark = signal(true);
   selectedLang = 'en';
   time = signal('');
 

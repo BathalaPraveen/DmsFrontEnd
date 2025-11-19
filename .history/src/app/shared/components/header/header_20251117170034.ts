@@ -1,18 +1,15 @@
 import { Component,signal , OnInit } from '@angular/core';
-import { NgClass } from '@angular/common';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [NgClass],
   templateUrl: './header.html',
   styleUrls: ['./header.css']
 })
 export class HeaderComponent implements OnInit {
 
+  darkMode = false;
   username = '';
-  isDark = signal(false);
-  selectedLang = 'en';
   time = signal('');
 
   ngOnInit() {
@@ -23,12 +20,11 @@ export class HeaderComponent implements OnInit {
     }, 1000);
   }
 
-  toggleIcon() {
-    this.isDark.update(v => !v);
+  toggleTheme() {
+    this.darkMode = !this.darkMode;
   }
 
-  changeLang(event: any) {
-    this.selectedLang = event.target.value;
-    console.log("Selected Language:", this.selectedLang);
+  changeLanguage(event: any) {
+    localStorage.setItem('lang', event.target.value);
   }
 }

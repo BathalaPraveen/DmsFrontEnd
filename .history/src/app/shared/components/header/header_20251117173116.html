@@ -1,0 +1,37 @@
+<nav class="header">
+
+  <img src="assets/logo.png" class="header-logo">
+
+  <div class="header-right">
+
+    <!-- DARK / LIGHT BUTTON (NO functionality) -->
+    <!-- THEME DROPDOWN -->
+    <div class="dropdown">
+      <button class="btn btn-outline-secondary rounded-circle p-1" data-bs-toggle="dropdown">
+        <i class="fa fa-moon"></i>
+      </button>
+
+      <ul class="dropdown-menu dropdown-menu-end">
+        <li class="dropdown-item d-flex align-items-center gap-2">
+          <i class="fa fa-moon text-primary"></i> Dark (coming soon)
+        </li>
+        <li class="dropdown-item d-flex align-items-center gap-2">
+          <i class="fa fa-sun text-warning"></i> Light (coming soon)
+        </li>
+      </ul>
+    </div>
+
+    <select >
+      <option>English</option>
+      <option>Malay</option>
+    </select>
+
+    <span class="fw-semibold">{{ time() }}</span>
+
+    <div class="profile">
+      <img src="assets/profile.png" class="profile-img">
+    </div>
+
+  </div>
+
+</nav>

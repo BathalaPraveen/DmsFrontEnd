@@ -1,0 +1,30 @@
+<nav class="header">
+
+  <img src="assets/logo.png" class="header-logo">
+
+  <div class="header-right">
+
+    <button
+      (click)="toggleTheme()"
+      class="btn btn-outline-secondary rounded-circle p-1"
+      [title]="darkMode ? 'Switch to Light Mode' : 'Switch to Dark Mode'">
+
+      <i *ngIf="darkMode" class="fa fa-sun text-warning"></i>
+      <i *ngIf="!darkMode" class="fa fa-moon"></i>
+
+    </button>
+
+    <select style={{ width: "140px" }}>
+      <option>English</option>
+      <option>Malay</option>
+    </select>
+
+    <span class="fw-semibold">{{ time() }}</span>
+
+    <div class="profile">
+      <img src="assets/profile.png" class="profile-img">
+    </div>
+
+  </div>
+
+</nav>

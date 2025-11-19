@@ -1,7 +1,7 @@
 .header {
-  height: 65px;
+  height: 46px;
   background: white;
-  padding: 10px 7px;
+  padding: 10px 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -9,7 +9,7 @@
 }
 
 .header-logo {
-  height: 36px;
+  height: 34px;
 }
 
 .header-right {
