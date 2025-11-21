@@ -23,10 +23,6 @@
   margin-top: 10px;
 }
 
-.password-wrapper {
-  position: relative;
-}
-
-.password-wrapper input {
-  padding-right: 45px !important;  /* space for icon */
+.password-container input {
+  padding-right: 55px !important; /* Space for eye icon + red border */
 }

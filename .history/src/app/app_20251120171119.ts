@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router, NavigationEnd, RouterOutlet } from '@angular/router';
 import { NgIf, CommonModule } from '@angular/common';
 import { filter } from 'rxjs/operators';
+
 import { HeaderComponent } from './shared/components/header/header';
 import { FooterComponent } from './shared/components/footer/footer';
 import { SidebarComponent } from './shared/components/sidebar/sidebar';
@@ -19,6 +20,7 @@ export class App {
 
   constructor(private router: Router) {
 
+    // Detect route change
     this.router.events
       .pipe(filter(event => event instanceof NavigationEnd))
       .subscribe((event: NavigationEnd) => {

@@ -1,0 +1,65 @@
+<aside class="sidebar" [class.collapsed]="collapsed" [style.width.px]="collapsed ? 60 : 250">
+
+  <!-- logo -->
+  <div class="logo-area">
+    <img *ngIf="!collapsed" src="assets/logo.png" class="logo-big" alt="logo">
+    <img *ngIf="collapsed" src="assets/slogo.png" class="logo-small" alt="slogo">
+  </div>
+
+  <!-- menu -->
+  <nav class="menu-wrap">
+    <ul class="menu-list list-unstyled m-0 p-0">
+      <li *ngFor="let m of menu" class="menu-item-root"
+          (mouseenter)="onMouseEnterParent(m.key, $event)"
+          (mouseleave)="onMouseLeaveParent()">
+
+        <!-- parent row -->
+        <div class="menu-parent d-flex align-items-center justify-content-between"
+             [class.active-parent]="activeParent===m.key"
+             (click)="m.children ? toggleParent(m.key) : onSingle(m)">
+
+          <div class="left d-flex align-items-center">
+            <i [class]="m.icon + ' me-2'"></i>
+            <span class="label" *ngIf="!collapsed">{{ m.label }}</span>
+          </div>
+
+          <div class="right" *ngIf="!collapsed">
+            <i *ngIf="m.children" class="fa"
+               [ngClass]="openMenu === m.key ? 'fa-chevron-down' : 'fa-chevron-right'"></i>
+          </div>
+        </div>
+
+        <!-- expanded child list -->
+        <ul *ngIf="!collapsed && m.children && openMenu === m.key" class="sub-list list-unstyled">
+          <li *ngFor="let c of m.children"
+              class="sub-item"
+              [class.active-sub]="activeItem === (c.label)"
+              (click)="onChildClick(c, m.key)">
+            <span class="dot"></span>
+            {{ c.label }}
+          </li>
+        </ul>
+
+        <!-- collapsed hover popup -->
+        <ng-container *ngIf="collapsed && hoverMenu === m.key">
+          <ul class="hover-popup list-unstyled"
+              [style.top.px]="hoverPos.top"
+              [style.left.px]="hoverPos.left + 8">
+            <li class="popup-title" (click)="onSingle(m)">{{ m.label }}</li>
+            <li *ngFor="let c of (m.children || [])" class="popup-item" (click)="onChildClick(c, m.key)">
+              {{ c.label }}
+            </li>
+          </ul>
+        </ng-container>
+
+      </li>
+    </ul>
+  </nav>
+
+  <div class="side-footer">
+    <button class="btn btn-sm btn-link collapse-btn" (click)="collapsed = !collapsed">
+      <i class="fa" [ngClass]="collapsed ? 'fa-chevron-right' : 'fa-chevron-left'"></i>
+    </button>
+  </div>
+
+</aside>

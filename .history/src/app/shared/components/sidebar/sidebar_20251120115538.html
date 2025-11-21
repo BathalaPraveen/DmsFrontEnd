@@ -1,0 +1,36 @@
+<div class="sidebar">
+
+  <ul class="menu">
+
+    <li *ngFor="let item of menu">
+
+      <div class="menu-item"
+           (click)="toggle(item)"
+           [class.active]="activeParent === item">
+
+        <span class="left">
+          <i class="{{ item.icon }}"></i>
+          <span>{{ item.label }}</span>
+        </span>
+
+        <i *ngIf="item.children"
+           class="fa"
+           [ngClass]="item.open ? 'fa-chevron-down' : 'fa-chevron-right'"></i>
+      </div>
+
+      <!-- CHILD MENU -->
+      <ul *ngIf="item.children && item.open" class="child-menu">
+        <li *ngFor="let c of item.children"
+            (click)="navigateTo(c)"
+            [class.sub-active]="activeChild === c.label">
+
+          <span class="dot"></span>
+          {{ c.label }}
+        </li>
+      </ul>
+
+    </li>
+
+  </ul>
+
+</div>

@@ -5,10 +5,6 @@
 
 /* Eye icon */
 .eye-icon {
-  position: absolute;
-  right: 12px;
-  top: 50%;
-  transform: translateY(-50%);  /* keeps icon centered always */
   cursor: pointer;
   color: #666;
   font-size: 18px;
@@ -23,10 +19,6 @@
   margin-top: 10px;
 }
 
-.password-wrapper {
-  position: relative;
-}
-
-.password-wrapper input {
-  padding-right: 45px !important;  /* space for icon */
+.password-container input {
+  padding-right: 55px !important; /* Space for eye icon + red border */
 }
