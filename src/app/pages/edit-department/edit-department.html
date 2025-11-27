@@ -1,0 +1,112 @@
+<div class="container mt-4">
+  <!-- Breadcrumb -->
+  <nav aria-label="breadcrumb" class="mb-3">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a (click)="gotoDashboard()" class="cursor-pointer">Home</a>
+      </li>
+      <li class="breadcrumb-item">Edit Department</li>
+    </ol>
+  </nav>
+
+  <!-- Header -->
+  <div class="card shadow-sm p-3 mb-4 d-flex justify-content-between align-items-center flex-row">
+    <h3 class="m-0">Edit Department</h3>
+
+    <button class="btn btn-primary" (click)="goBackToDepartment()">
+      << Back
+    </button>
+  </div>
+
+  <!-- Form -->
+  <div class="card shadow-sm p-4">
+    <form #editDeptForm="ngForm">
+
+      <!-- Row 1: Department + State -->
+      <div class="row g-3 mb-3">
+        <div class="col-md-6">
+          <label class="form-label fw-bold">Department</label>
+          <input type="text" class="form-control"
+                 name="department" [(ngModel)]="departmentData.department"
+                 #departmentInput="ngModel"
+                 required minlength="3" maxlength="50">
+          <small class="text-danger" *ngIf="departmentInput.errors?.['required']">Department is required.</small>
+          <small class="text-danger" *ngIf="departmentInput.errors?.['minlength']">Minimum 3 characters required.</small>
+          <small class="text-danger" *ngIf="departmentInput.errors?.['maxlength']">Maximum 50 characters allowed.</small>
+        </div>
+
+        <div class="col-md-6">
+          <label class="form-label fw-bold">State</label>
+          <select class="form-control"
+                  name="state"
+                  [(ngModel)]="departmentData.state"
+                  #stateInput="ngModel"
+                  (change)="onStateChange(departmentData.state)"
+                  required>
+            <option value="">Select State</option>
+            <option *ngFor="let s of states" [value]="s.name">{{ s.name }}</option>
+          </select>
+          <small class="text-danger" *ngIf="stateInput.errors?.['required']">State is required.</small>
+        </div>
+      </div>
+
+      <!-- Row 2: District + Name -->
+      <div class="row g-3 mb-3">
+        <div class="col-md-6">
+          <label class="form-label fw-bold">District</label>
+          <select class="form-control"
+                  name="district"
+                  [(ngModel)]="departmentData.district"
+                  #districtInput="ngModel"
+                  required>
+            <option value="">Select District</option>
+            <option *ngFor="let d of districts" [value]="d.name">{{ d.name }}</option>
+          </select>
+          <small class="text-danger" *ngIf="districtInput.errors?.['required']">District is required.</small>
+        </div>
+
+        <div class="col-md-6">
+          <label class="form-label fw-bold">Name</label>
+          <input type="text" class="form-control"
+                 name="name" [(ngModel)]="departmentData.name"
+                 #nameInput="ngModel"
+                 required minlength="2" maxlength="50">
+          <small class="text-danger" *ngIf="nameInput.errors?.['required']">Name is required.</small>
+          <small class="text-danger" *ngIf="nameInput.errors?.['minlength']">Minimum 2 characters required.</small>
+          <small class="text-danger" *ngIf="nameInput.errors?.['maxlength']">Maximum 50 characters allowed.</small>
+        </div>
+      </div>
+
+      <!-- Row 3: Position + Email -->
+      <div class="row g-3 mb-3">
+        <div class="col-md-6">
+          <label class="form-label fw-bold">Position</label>
+          <input type="text" class="form-control"
+                 name="position" [(ngModel)]="departmentData.position"
+                 #positionInput="ngModel"
+                 required minlength="2" maxlength="50">
+          <small class="text-danger" *ngIf="positionInput.errors?.['required']">Position is required.</small>
+          <small class="text-danger" *ngIf="positionInput.errors?.['minlength']">Minimum 2 characters required.</small>
+          <small class="text-danger" *ngIf="positionInput.errors?.['maxlength']">Maximum 50 characters allowed.</small>
+        </div>
+
+        <div class="col-md-6">
+          <label class="form-label fw-bold">Email</label>
+          <input type="email" class="form-control"
+                 name="emailId"
+                 [(ngModel)]="departmentData.emailId"
+                 #emailInput="ngModel"
+                 required email>
+          <small class="text-danger" *ngIf="emailInput.errors?.['required']">Email is required.</small>
+          <small class="text-danger" *ngIf="emailInput.errors?.['email']">Enter a valid email.</small>
+        </div>
+      </div>
+
+      <!-- Buttons -->
+      <div class="mt-4 d-flex justify-content-end gap-2">
+        <button type="button" class="btn btn-secondary" (click)="gotoDashboard()">Cancel</button>
+        <button type="button" class="btn btn-primary" (click)="updateDepartment()" [disabled]="!editDeptForm.valid">Save</button>
+      </div>
+    </form>
+  </div>
+</div>

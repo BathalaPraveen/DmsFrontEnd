@@ -1,0 +1,4 @@
+.table-header th {
+  color: #212529;
+  font-weight: 600;   /* optional — makes header bold */
+}
