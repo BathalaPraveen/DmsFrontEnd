@@ -1,0 +1,94 @@
+<div class="container mt-3 p-0">
+
+  <!-- Breadcrumb -->
+  <div class="breadcrumb">
+    <a routerLink="/home">Home</a> /
+    <span>Holiday Management</span>/
+    <span>Add Holiday</span>
+  </div>
+
+  <!-- Header -->
+  <div class="card mb-4"
+       [style.backgroundColor]="darkMode ? '#3d3d3dff' : '#fff'"
+       [style.color]="darkMode ? '#e6eef8' : '#212529'">
+
+    <div class="card-body d-flex justify-content-between align-items-center">
+      <h4 class="mb-0">Add Holiday</h4>
+
+      <button routerLink="/holiday/holiday-list" class="btn btn-primary">
+        <i class="fa-solid fa-backward"></i> Back
+      </button>
+    </div>
+  </div>
+
+  <!-- Form Card -->
+  <div class="card shadow-sm p-4"
+       [style.backgroundColor]="darkMode ? '#3d3d3dff' : '#fff'"
+       [style.color]="darkMode ? '#e6eef8' : '#212529'">
+
+    <div class="row g-3 align-items-end">
+
+      <!-- State -->
+      <div class="col-md-6">
+        <label class="form-label fw-semibold">
+          State <span class="text-danger">*</span>
+        </label>
+
+        <select class="form-select" [(ngModel)]="formData.state"(ngModelChange)="clearError('state')" name="state">
+          <option value="">Select State</option>
+          <option *ngFor="let s of stateOptions" [value]="s">
+            {{ s }}
+          </option>
+        </select>
+
+        <div *ngIf="errors.state" class="text-danger small mt-1">
+          {{ errors.state }}
+        </div>
+      </div>
+
+      <!-- Holiday Date -->
+      <div class="col-md-6">
+        <label class="form-label fw-semibold">
+          Date <span class="text-danger">*</span>
+        </label>
+
+        <input type="date"
+               class="form-control"
+               [(ngModel)]="formData.holidayDate"
+               name="holidayDate" (ngModelChange)="clearError('holidayDate')" />
+
+        <div *ngIf="errors.holidayDate" class="text-danger small mt-1">
+          {{ errors.holidayDate }}
+        </div>
+      </div>
+    </div>
+
+    <!-- Holiday Info -->
+    <div class="mt-3">
+      <label class="form-label fw-semibold">
+        Holiday Information <span class="text-danger">*</span>
+      </label>
+
+      <textarea class="form-control"
+                rows="3"
+                [(ngModel)]="formData.holidayInfo" (ngModelChange)="clearError('holidayInfo')"
+                name="holidayInfo"></textarea>
+
+      <div *ngIf="errors.holidayInfo" class="text-danger small mt-1">
+        {{ errors.holidayInfo }}
+      </div>
+    </div>
+
+    <!-- Buttons -->
+    <div class="d-flex gap-2 mt-3">
+      <button class="btn btn-success" (click)="handleSave()">
+        <i class="fa-regular fa-floppy-disk"></i> Save
+      </button>
+
+      <button class="btn btn-secondary" (click)="handleCancel()">
+        <i class="fa-solid fa-xmark"></i> Cancel
+      </button>
+    </div>
+
+  </div>
+</div>

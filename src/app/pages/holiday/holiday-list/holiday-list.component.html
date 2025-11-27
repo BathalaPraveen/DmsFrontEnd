@@ -1,0 +1,61 @@
+<div class="page-container">
+
+  <!-- Breadcrumb -->
+  <div class="breadcrumb">
+    <a routerLink="/home">Home</a> /
+    <span>Holiday Management</span>
+  </div>
+
+  <!-- Header -->
+
+  <div class="card mb-4">
+
+  <div class="card-body d-flex justify-content-between align-items-center">
+    <h2 class="mb-0">Holiday List</h2>
+    <div class="actions">
+      <button class="excel-btn"><i class="fa-regular fa-file-excel"></i> Excel</button>
+      <button class="pdf-btn"><i class="fa-regular fa-file-lines"></i> PDF</button>
+      <button class="add-btn" routerLink="/holiday/add"><i class="fa-duotone fa-solid fa-plus"></i></button>
+    </div>
+  </div>
+  </div>
+
+  <!-- Table -->
+  <div class="table-wrapper">
+    <table class="styled-table">
+      <thead>
+      <tr>
+        <th>State </th>
+        <th>Date </th>
+        <th>Informations</th>
+        <th>Action</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngIf="holidays.length === 0">
+        <td colspan="4" class="no-data">No Data</td>
+      </tr>
+
+      <tr *ngFor="let h of paginatedData">
+        <td>{{ h.state }}</td>
+        <td>{{ h.date }}</td>
+        <td>{{ h.informations }}</td>
+        <td>
+          <button class="action-btn edit-btn"  [routerLink]="['/holiday/holiday-edit', h.id]"><i class="fa-regular fa-pen-to-square"></i></button>
+          <button class="action-btn delete-btn" (click)="deleteHoliday(h.id)"><i class="fa-solid fa-trash-can"></i></button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+
+    <!-- Pagination Section -->
+    <app-pagination
+      [currentPage]="currentPage"
+      [itemsPerPage]="itemsPerPage"
+      [totalItems]="totalItems"
+      (pageChange)="currentPage = $event"
+      (itemsPerPageChange)="itemsPerPage = $event">
+    </app-pagination>
+  </div>
+
+</div>

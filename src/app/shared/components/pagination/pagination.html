@@ -1,0 +1,22 @@
+<div class="d-flex justify-content-between align-items-center mt-3 flex-wrap">
+
+  <!-- Items per page -->
+  <div>
+    <label class="me-2 fw-bold">Items per page:</label>
+    <select [(ngModel)]="itemsPerPage" (change)="updateItemsPerPage()" class="form-select d-inline-block w-auto">
+      <option *ngFor="let size of pageSizes" [value]="size">{{ size }}</option>
+    </select>
+  </div>
+
+  <!-- Page info -->
+  <div class="fw-bold">
+    {{ currentPage }} of {{ totalPages }} pages ({{ totalItems }} items)
+  </div>
+
+  <!-- Navigation buttons -->
+  <div class="d-flex gap-2">
+    <button class="btn btn-outline-secondary btn-sm" (click)="previousPage()" [disabled]="currentPage === 1">&lt;</button>
+    <button class="btn btn-outline-secondary btn-sm" (click)="nextPage()" [disabled]="currentPage === totalPages">&gt;</button>
+  </div>
+
+</div>

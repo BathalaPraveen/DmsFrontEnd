@@ -1,0 +1,204 @@
+<div class="container mt-3 p-0">
+
+  <!-- Breadcrumb -->
+  <div class="breadcrumb">
+    <a routerLink="/home">Home</a> /
+    <span>Product Management</span> /
+    <span>Edit Product</span>
+  </div>
+
+  <!-- Header -->
+  <div class="card mb-4"
+       [style.backgroundColor]="darkMode ? '#3d3d3dff' : '#fff'"
+       [style.color]="darkMode ? '#e6eef8' : '#212529'">
+
+    <div class="card-body d-flex justify-content-between align-items-center">
+      <h4 class="mb-0">Edit Product</h4>
+      <button routerLink="/products/product-list" class="btn btn-primary">
+        <i class="fa-solid fa-backward"></i> Back
+      </button>
+    </div>
+  </div>
+
+  <!-- Form Card -->
+  <div class="card shadow-sm p-4"
+       [style.backgroundColor]="darkMode ? '#3d3d3dff' : '#fff'"
+       [style.color]="darkMode ? '#e6eef8' : '#212529'">
+
+    <div class="row g-3">
+
+      <!-- Product ID -->
+<!--      <div class="col-md-6">-->
+<!--        <label class="form-label fw-semibold">Product ID</label>-->
+<!--        <input type="text" class="form-control"-->
+<!--               [(ngModel)]="formData.prodId"-->
+<!--               name="prodId" />-->
+<!--      </div>-->
+      <!-- Product Name -->
+      <div class="col-md-6">
+        <label class="form-label fw-semibold">Product Name <span class="text-danger">*</span></label>
+        <input type="text" class="form-control"
+               [(ngModel)]="formData.prodName"
+               name="prodName" />
+        <div *ngIf="errors.prodName" class="text-danger small mt-1">
+          {{ errors.prodName }}
+        </div>
+      </div>
+
+      <!-- Category -->
+      <div class="col-md-6">
+        <label class="form-label fw-semibold">Category <span class="text-danger">*</span></label>
+        <input type="text" class="form-control"
+               [(ngModel)]="formData.prodCategory"
+               name="prodCategory" />
+        <div *ngIf="errors.prodCategory" class="text-danger small mt-1">
+          {{ errors.prodCategory }}
+        </div>
+      </div>
+
+      <!-- Subcategory -->
+      <div class="col-md-6">
+        <label class="form-label fw-semibold">Subcategory</label>
+        <input type="text" class="form-control"
+               [(ngModel)]="formData.prodSubcategory"
+               name="prodSubcategory" />
+      </div>
+
+      <!-- Model No -->
+      <div class="col-md-6">
+        <label class="form-label fw-semibold">Model No</label>
+        <input type="text" class="form-control"
+               [(ngModel)]="formData.prodModelNo"
+               name="prodModelNo" />
+      </div>
+
+      <!-- Manufacturer -->
+      <div class="col-md-6">
+        <label class="form-label fw-semibold">Manufacturer ID</label>
+        <input type="number" class="form-control"
+               [(ngModel)]="formData.prodManufacturerId.id"
+               name="prodManufacturerId" />
+      </div>
+
+      <!-- Unit of Measure -->
+      <div class="col-md-6">
+        <label class="form-label fw-semibold">UOM ID</label>
+        <input type="number" class="form-control"
+               [(ngModel)]="formData.prodUom.id"
+               name="prodUom" />
+      </div>
+
+      <!-- Buy Price -->
+      <div class="col-md-4">
+        <label class="form-label fw-semibold">Buy Price <span class="text-danger">*</span></label>
+        <input type="number" class="form-control"
+               [(ngModel)]="formData.prodBuyPrice"
+               name="prodBuyPrice" />
+        <div *ngIf="errors.prodBuyPrice" class="text-danger small mt-1">
+          {{ errors.prodBuyPrice }}
+        </div>
+      </div>
+
+      <!-- Bprice -->
+      <div class="col-md-4">
+        <label class="form-label fw-semibold">B Price</label>
+        <input type="number" class="form-control"
+               [(ngModel)]="formData.prodBprice"
+               name="prodBprice" />
+      </div>
+
+      <!-- Cfee -->
+      <div class="col-md-4">
+        <label class="form-label fw-semibold">C Fee</label>
+        <input type="number" class="form-control"
+               [(ngModel)]="formData.prodCfee"
+               name="prodCfee" />
+      </div>
+
+      <!-- Hfee -->
+      <div class="col-md-4">
+        <label class="form-label fw-semibold">H Fee</label>
+        <input type="number" class="form-control"
+               [(ngModel)]="formData.prodHfee"
+               name="prodHfee" />
+      </div>
+
+      <!-- Ifee -->
+      <div class="col-md-4">
+        <label class="form-label fw-semibold">I Fee</label>
+        <input type="number" class="form-control"
+               [(ngModel)]="formData.prodIfee"
+               name="prodIfee" />
+      </div>
+
+      <!-- Mfee -->
+      <div class="col-md-4">
+        <label class="form-label fw-semibold">M Fee</label>
+        <input type="number" class="form-control"
+               [(ngModel)]="formData.prodMfee"
+               name="prodMfee" />
+      </div>
+
+      <!-- Length & Width -->
+      <div class="col-md-6">
+        <label class="form-label fw-semibold">Length</label>
+        <input type="text" class="form-control"
+               [(ngModel)]="formData.prodLength"
+               name="prodLength" />
+      </div>
+      <div class="col-md-6">
+        <label class="form-label fw-semibold">Width</label>
+        <input type="text" class="form-control"
+               [(ngModel)]="formData.prodWidth"
+               name="prodWidth" />
+      </div>
+
+      <!-- Date -->
+      <div class="col-md-6">
+        <label class="form-label fw-semibold">Date <span class="text-danger">*</span></label>
+        <input type="date" class="form-control"
+               [(ngModel)]="formData.prodDate"
+               name="prodDate" />
+        <div *ngIf="errors.prodDate" class="text-danger small mt-1">
+          {{ errors.prodDate }}
+        </div>
+      </div>
+
+      <!-- Status -->
+      <div class="col-md-6">
+        <label class="form-label fw-semibold">Status</label>
+        <input type="text" class="form-control"
+               [(ngModel)]="formData.prodStatus"
+               name="prodStatus" />
+      </div>
+
+      <!-- Descriptions -->
+      <div class="col-6">
+        <label class="form-label fw-semibold">Descriptions</label>
+        <textarea class="form-control" rows="3"
+                  [(ngModel)]="formData.prodDescriptions"
+                  name="prodDescriptions"></textarea>
+      </div>
+
+      <!-- Suppliers -->
+      <div class="col-6">
+        <label class="form-label fw-semibold">Suppliers</label>
+        <input type="text" class="form-control"
+               [(ngModel)]="formData.prodSuppliers"
+               name="prodSuppliers" />
+      </div>
+
+    </div>
+
+    <!-- Buttons -->
+    <div class="d-flex gap-2 mt-3">
+      <button class="btn btn-success" (click)="handleSave()">
+        <i class="fa-regular fa-floppy-disk"></i> Update
+      </button>
+      <button class="btn btn-secondary" (click)="handleCancel()">
+        <i class="fa-solid fa-xmark"></i> Cancel
+      </button>
+    </div>
+
+  </div>
+</div>

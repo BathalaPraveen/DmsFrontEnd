@@ -40,8 +40,8 @@ export class SidebarComponent {
         { label: "Confirmed Deliveries", path: "/delivery/confirmed" }
       ]
     },
-
-    { label: "Department", icon: "fa fa-users", path: "/department" },
+    { label: "Holiday Management", icon: "fa-solid fa-umbrella-beach", path: "/holiday/holiday-list" },
+    { label: "Products", icon: "fa-solid fa-cart-shopping", path: "/products/product-list" },
     { label: "Employee", icon: "fa fa-user", path: "/employee" }
   ];
 

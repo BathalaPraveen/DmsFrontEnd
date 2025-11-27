@@ -3,6 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../../core/services/auth.service';
 import { NgClass } from '@angular/common';   // 👈 IMPORTANT
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -22,6 +23,20 @@ export class LoginComponent {
     private auth: AuthService,
     private router: Router
   ) {}
+  toast(icon: any, title: string) {
+      const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 2500,
+        timerProgressBar: true
+      });
+
+      Toast.fire({
+        icon: icon,
+        title: title
+      });
+  }
 
   submit() {
     this.errors = {};
@@ -32,10 +47,14 @@ export class LoginComponent {
 
     this.auth.login(this.username, this.password).subscribe({
       next: (res: any) => {
-        this.router.navigate(['/dashboard']);
+            this.toast('success', 'Login successful!');
+            setTimeout(() => {
+               this.router.navigate(['/dashboard']);
+            }, 800); // small delay after toast
       },
-      error: () => {
-        this.errors.general = 'Invalid username or password';
+      error: (err: any) => {
+           const message = err?.error?.message || 'Login failed!';
+           this.toast('error', message);
       }
     });
   }

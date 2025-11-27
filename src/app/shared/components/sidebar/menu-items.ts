@@ -9,7 +9,8 @@ export interface MenuItem {
 
 export const MENU_ITEMS: MenuItem[] = [
   { key: 'dashboard', label: 'Dashboard', icon: 'fa fa-home', path: '/dashboard' },
-
+  { key: 'holiday', label: 'Holiday', icon: 'fa fa-home', path: '/holiday/holiday-list' },
+  { key: "products", label: "Products", path: "/products/product-list" },
   {
     key: 'construction',
     label: 'Construction Work',
@@ -36,8 +37,6 @@ export const MENU_ITEMS: MenuItem[] = [
       'Close DRNs'
     ]
   },
-
-  { key: 'department', label: 'Department', icon: 'fa fa-user-tie', path: '/department' },
   { key: 'employee', label: 'Employee', icon: 'fa fa-user-tie', path: '/employee' },
   { key: 'supplier', label: 'Supplier Management', icon: 'fa fa-truck-loading', children: [
     { label: 'All Suppliers', path: '/supplier' },
