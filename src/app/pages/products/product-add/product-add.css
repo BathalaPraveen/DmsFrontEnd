@@ -11,3 +11,10 @@ textarea {
   color: #007bff;
   text-decoration: none;
 }
+.error-box {
+  color: #fff;
+  background: #d9534f;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+}

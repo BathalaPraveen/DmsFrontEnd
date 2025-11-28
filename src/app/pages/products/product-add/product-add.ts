@@ -2,7 +2,9 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterModule, Router } from '@angular/router';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { ProductService } from '../../../core/services/product.service';
+import { ChangeDetectorRef } from '@angular/core';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-product-add',
@@ -13,7 +15,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 })
 export class ProductAddComponent {
 
-  darkMode = false; // optional: use theme context
+  darkMode = false;
 
   formData: any = {
     prod_id: '',
@@ -32,7 +34,7 @@ export class ProductAddComponent {
     prod_length: '',
     prod_width: '',
     prod_date: '',
-    prod_status: '',
+    prod_status: 'In-progress',
     prod_suppliers: '',
     prod_descriptions: '',
     prod_orig_image: '',
@@ -41,22 +43,33 @@ export class ProductAddComponent {
 
   errors: any = {};
 
-  constructor(private router: Router, private http: HttpClient) {}
+  constructor(
+    private router: Router,
+    private productService: ProductService,
+    private cd: ChangeDetectorRef
+  ) {}
+
   clearError(field: string) {
     if (this.errors[field]) {
       delete this.errors[field];
     }
   }
+
   validate() {
     const e: any = {};
+
     if (!this.formData.prod_id || !/^[0-9]+$/.test(this.formData.prod_id))
-          e.prod_id = "Product ID is required and must be numeric";
+      e.prod_id = "Product ID is required and must be numeric";
+
     if (!this.formData.prod_name || this.formData.prod_name.trim().length < 2)
       e.prod_name = "Product name is required";
+
     if (!this.formData.prod_category)
       e.prod_category = "Category is required";
+
     if (!this.formData.prod_date)
       e.prod_date = "Date is required";
+
     if (!this.formData.prod_buy_price)
       e.prod_buy_price = "Buy price is required";
 
@@ -88,32 +101,36 @@ export class ProductAddComponent {
       prodModelNo: this.formData.prod_model_no,
       prodSuppliers: this.formData.prod_suppliers,
       prodStatus: this.formData.prod_status,
-      prodDate: this.formData.prod_date,
-      productId: this.formData.product_id
+      prodDate: this.formData.prod_date
     };
 
-    // Example: Get JWT token from localStorage
-    const token = localStorage.getItem('token');
-
-    this.http.post('http://localhost:8080/api/v1/products', payload, {
-      headers: {
-        Authorization: `Bearer ${token}`
-      }
-    })
-    .subscribe({
+    this.productService.addProduct(payload).subscribe({
       next: () => {
-        alert("Product added successfully!");
-        this.router.navigate(['/products/product-list']);
+        Swal.fire({
+                  icon: 'success',
+                  title: 'Product Added',
+                  text: 'Product added successfully!',
+                  confirmButtonColor: '#3085d6'
+                }).then(() => {
+                  this.router.navigate(['/products/product-list']);
+                });
       },
       error: (err) => {
         console.error("ADD ERROR:", err);
-        if (err.status === 401) alert("Unauthorized! Please login.");
-        else alert("Failed to add product!");
-      }
-    });
+
+                const errorMessage = err.error?.message || "Failed to add product!";
+                Swal.fire({
+                  icon: 'error',
+                  title: 'Add Failed',
+                  text: errorMessage,
+                  confirmButtonColor: '#d33'
+                });
+
+                this.errors.api = errorMessage;
+                this.cd.detectChanges();
+              }
+            });
   }
-
-
 
   handleCancel() {
     this.formData = {};

@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
 import { ChangeDetectorRef } from '@angular/core';
 import Swal from 'sweetalert2';
+import { HolidayService } from '../../../core/services/holiday.service';
 
 @Component({
   selector: 'app-holiday-edit',
@@ -35,7 +35,7 @@ export class HolidayEditComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private http: HttpClient,
+    private holidayService: HolidayService,
     private router: Router,
     private cd: ChangeDetectorRef
   ) {}
@@ -45,29 +45,28 @@ export class HolidayEditComponent implements OnInit {
     this.loadHoliday();
   }
 
-  // Convert backend format "27-01-2025" → HTML date input "2025-01-27"
   convertToInputDate(dateStr: string): string {
     const [day, month, year] = dateStr.split('-');
     return `${year}-${month}-${day}`;
   }
 
   loadHoliday() {
-    this.http.get<any>(`http://localhost:8080/api/v1/holidays/${this.id}`)
-      .subscribe({
-        next: (res) => {
-          setTimeout(() => {
-            this.formData.state = res.state;
-            this.formData.holidayDate = this.convertToInputDate(res.date);
-            this.formData.holidayInfo = res.informations;
-            this.originalData = { ...this.formData };
-            this.cd.detectChanges();
-          }, 0);
-        },
-        error: () => {
-          Swal.fire("Error", "Unable to load holiday!", "error");
-        }
-      });
+    this.holidayService.getHolidayById(this.id).subscribe({
+      next: (res: any) => {
+        setTimeout(() => {
+          this.formData.state = res.state;
+          this.formData.holidayDate = this.convertToInputDate(res.date);
+          this.formData.holidayInfo = res.informations;
+          this.originalData = { ...this.formData };
+          this.cd.detectChanges();
+        }, 0);
+      },
+      error: () => {
+        Swal.fire("Error", "Unable to load holiday!", "error");
+      }
+    });
   }
+
   resetToOriginal() {
     this.formData = { ...this.originalData };
   }
@@ -84,7 +83,6 @@ export class HolidayEditComponent implements OnInit {
     return Object.keys(e).length === 0;
   }
 
-  // Convert HTML date "2025-01-27" → backend format "27-01-2025"
   formatDateToDDMMYYYY(dateStr: string): string {
     const d = new Date(dateStr);
     const day = String(d.getDate()).padStart(2, '0');
@@ -102,21 +100,20 @@ export class HolidayEditComponent implements OnInit {
       informations: this.formData.holidayInfo
     };
 
-    this.http.put(`http://localhost:8080/api/v1/holidays/${this.id}`, payload)
-      .subscribe({
-        next: () => {
-          Swal.fire({
-            icon: 'success',
-            title: 'Updated!',
-            text: 'Holiday updated successfully.',
-            confirmButtonColor: '#3085d6'
-          }).then(() => {
-            this.router.navigate(['/holiday/holiday-list']);
-          });
-        },
-        error: () => {
-          Swal.fire('Error', 'Failed to update holiday', 'error');
-        }
-      });
+    this.holidayService.updateHoliday(this.id, payload).subscribe({
+      next: () => {
+        Swal.fire({
+          icon: 'success',
+          title: 'Updated!',
+          text: 'Holiday updated successfully.',
+          confirmButtonColor: '#3085d6'
+        }).then(() => {
+          this.router.navigate(['/holiday/holiday-list']);
+        });
+      },
+      error: () => {
+        Swal.fire('Error', 'Failed to update holiday', 'error');
+      }
+    });
   }
 }

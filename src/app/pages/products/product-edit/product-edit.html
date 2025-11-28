@@ -167,11 +167,12 @@
       <!-- Status -->
       <div class="col-md-6">
         <label class="form-label fw-semibold">Status</label>
-        <input type="text" class="form-control"
-               [(ngModel)]="formData.prodStatus"
-               name="prodStatus" />
+        <select class="form-control" [(ngModel)]="formData.prodStatus" name="prodStatus">
+          <option value="">-- Select Status --</option>
+          <option value="In-progress">In-progress</option>
+          <option value="Completed">Completed</option>
+        </select>
       </div>
-
       <!-- Descriptions -->
       <div class="col-6">
         <label class="form-label fw-semibold">Descriptions</label>

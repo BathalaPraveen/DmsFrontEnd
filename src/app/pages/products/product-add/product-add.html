@@ -21,6 +21,9 @@
   </div>
 
   <!-- Form Card -->
+  <div *ngIf="errors.api" class="error-box">
+    {{ errors.api }}
+  </div>
   <div class="card shadow-sm p-4"
        [style.backgroundColor]="darkMode ? '#3d3d3dff' : '#fff'"
        [style.color]="darkMode ? '#e6eef8' : '#212529'">
@@ -92,7 +95,7 @@
       </div>
 
       <!-- Buy Price -->
-      <div class="col-md-4">
+      <div class="col-md-6">
         <label class="form-label fw-semibold">Buy Price <span class="text-danger">*</span></label>
         <input type="number" class="form-control"
                [(ngModel)]="formData.prod_buy_price" (ngModelChange)="clearError('prod_buy_price')"
@@ -170,9 +173,11 @@
       <!-- Status -->
       <div class="col-md-6">
         <label class="form-label fw-semibold">Status</label>
-        <input type="text" class="form-control"
-               [(ngModel)]="formData.prod_status"
-               name="prod_status" />
+        <select class="form-control" [(ngModel)]="formData.prod_status" name="prod_status">
+          <option value="">-- Select Status --</option>
+          <option value="In-progress">In-progress</option>
+          <option value="Completed">Completed</option>
+        </select>
       </div>
 
       <!-- Descriptions -->
